@@ -7,6 +7,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "esp8266.h"
+#include "gdbstub-cfg.h"
 
 const int gpio = 2;
 
@@ -52,7 +53,8 @@ void blinkenRegisterTask(void *pvParameters)
 
 void user_init(void)
 {
-    uart_set_baud(0, 115200);
+    uart_set_baud(0, 115200); 
+    gdbstub_init();
     xTaskCreate(blinkenTask, (signed char *)"blinkenTask", 256, NULL, 2, NULL);
     //xTaskCreate(blinkenRegisterTask, (signed char *)"blinkenRegisterTask", 256, NULL, 2, NULL);
 }

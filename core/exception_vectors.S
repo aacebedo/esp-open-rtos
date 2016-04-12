@@ -66,6 +66,7 @@ VecBase:
         .org    VecBase + 0x10
 DebugExceptionVector:
         .type   DebugExceptionVector, @function
+        .global DebugExceptionVector
 
         wsr     a0, excsave2
         call0   sdk_user_fatal_exception_handler
